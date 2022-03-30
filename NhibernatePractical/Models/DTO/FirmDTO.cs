@@ -30,10 +30,10 @@ namespace NhibernatePractical.Models.DTO
 
         public virtual int UserId { get; set; }
         public virtual UserDTO UserList { get; set; } 
-        public virtual int CityId { get; set; }
-        public virtual CityDTO CityList { get; set; } // for api 
-        public virtual int StateId { get; set; }
-        public virtual StateDTO StateList { get; set; } // for api 
+        public virtual string FirmCityName { get; set; }
+    
+        public virtual string FirmStateName { get; set; }
+     
 
         public virtual DateTime CreationDate { get; set; }
         public virtual DateTime ModificationDate { get; set; }
@@ -44,7 +44,6 @@ namespace NhibernatePractical.Models.DTO
         {
             DonorList = new List<DonorDTO>();
         }
-        public List<SelectListItem> Cities = new List<SelectListItem>();
-        public List<SelectListItem> States = new List<SelectListItem>();
+       
     }
 }

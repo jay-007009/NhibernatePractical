@@ -27,8 +27,7 @@ namespace NhibernatePractical.Models.NhibernateMapping
             Map(x => x.UserId);
 
             References(x => x.UserList).Column("UserId").Fetch.Join();
-            References(x => x.CityList).Column("CityId").Fetch.Join();
-            References(x => x.StateList).Column("StateId").Fetch.Join();
+       
             HasMany(x => x.DonorList).KeyColumn("FirmId").Inverse().Fetch.Join().AsSet().Not.LazyLoad();
         }
     }

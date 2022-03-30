@@ -16,14 +16,13 @@ namespace NhibernatePractical.Models.NhibernateMapping
             Map(x => x.DonorName);
             Map(x => x.AddressLine1);
             Map(x => x.AddressLine2);
-            Map(x => x.CityId);
-            Map(x => x.StateId);
+            Map(x => x.DonorCityName);
+            Map(x => x.DonorStateName);
             Map(x => x.DonationAmount);
             Map(x => x.MobileNo);
             Map(x => x.FirmId);
             References(x => x.FirmList).Column("FirmId").Fetch.Join();
-            References(x => x.CityList).Column("CityId").Fetch.Join();
-            References(x => x.StateList).Column("StateId").Fetch.Join();
+          
         }
     }
 }

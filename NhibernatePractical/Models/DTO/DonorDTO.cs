@@ -22,10 +22,10 @@ namespace NhibernatePractical.Models.DTO
         public virtual string AddressLine2 { get; set; }
 
 
-        public virtual int CityId { get; set; }
-        public virtual CityDTO CityList { get; set; }
-        public virtual int StateId { get; set; }
-        public virtual StateDTO StateList { get; set; }
+        public virtual string DonorCityName { get; set; }
+     
+        public virtual string DonorStateName { get; set; }
+       
 
         public virtual DateTime CreationDate { get; set; }
         public virtual DateTime ModificationDate { get; set; }
