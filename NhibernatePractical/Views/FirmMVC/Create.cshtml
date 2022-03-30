@@ -1,0 +1,98 @@
+﻿@model NhibernatePractical.Models.DTO.FirmDTO
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>FirmDTO</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirmId" class="control-label"></label>
+                <input asp-for="FirmId" class="form-control" style=" border-radius: 25px;  padding: 20px; width: 500px; height: 10px;" />
+                <span asp-validation-for="FirmId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirmName" class="control-label"></label>
+                <input asp-for="FirmName" class="form-control" style=" border-radius: 25px;  padding: 20px; width: 500px; height: 10px;" />
+                <span asp-validation-for="FirmName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegisterNo" class="control-label"></label>
+                <input asp-for="RegisterNo" class="form-control" style=" border-radius: 25px;  padding: 20px; width: 500px; height: 10px;" />
+                <span asp-validation-for="RegisterNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegisterDate" class="control-label"></label>
+                <input asp-for="RegisterDate" class="form-control" style=" border-radius: 25px;  padding: 20px; width: 500px; height: 10px;" />
+                <span asp-validation-for="RegisterDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DonationLimit" class="control-label"></label>
+                <input asp-for="DonationLimit" class="form-control" style=" border-radius: 25px;  padding: 20px; width: 500px; height: 10px;" />
+                <span asp-validation-for="DonationLimit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressLine1" class="control-label"></label>
+                <input asp-for="AddressLine1" class="form-control" style=" border-radius: 25px;  padding: 20px; width: 500px; height: 10px;" />
+                <span asp-validation-for="AddressLine1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressLine2" class="control-label"></label>
+                <input asp-for="AddressLine2" class="form-control" style=" border-radius: 25px;  padding: 20px; width: 500px; height: 10px;" />
+                <span asp-validation-for="AddressLine2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" class="form-control" style=" border-radius: 25px;  padding: 20px; width: 500px; height: 10px;" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <b> <label asp-for="CityList.CityName" class="control-label">City</label> </b> <br />
+                <select asp-for="CityList.CityName" placeholder="Please Select Any City">
+
+                    <option>asp-for="CityList.CityName"</option>
+                    <option>Surat</option>
+                    <option>Mumbai</option>
+                    <option>Bangalore</option>
+                    <option>Pune</option>
+                </select>
+                <span asp-validation-for="CityList.CityName" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="StateId" class="control-label"></label>
+                <input asp-for="StateId" class="form-control" />
+                <span asp-validation-for="StateId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreationDate" class="control-label"></label>
+                <input asp-for="CreationDate" class="form-control" />
+                <span asp-validation-for="CreationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ModificationDate" class="control-label"></label>
+                <input asp-for="ModificationDate" class="form-control" />
+                <span asp-validation-for="ModificationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
