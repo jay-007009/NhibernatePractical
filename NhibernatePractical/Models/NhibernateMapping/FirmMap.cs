@@ -22,8 +22,8 @@ namespace NhibernatePractical.Models.NhibernateMapping
             Map(x => x.AddressLine2);
             Map(x => x.CreationDate);
             Map(x => x.ModificationDate);
-            Map(x => x.CityId);
-            Map(x => x.StateId);
+            Map(x => x.FirmCityName);
+            Map(x => x.FirmStateName);
             Map(x => x.UserId);
 
             References(x => x.UserList).Column("UserId").Fetch.Join();

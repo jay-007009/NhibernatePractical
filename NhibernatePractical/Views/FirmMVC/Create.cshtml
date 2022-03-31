@@ -53,30 +53,20 @@
                 <span asp-validation-for="UserId" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <b> <label asp-for="CityList.CityName" class="control-label">City</label> </b> <br />
-                <select asp-for="CityList.CityName" placeholder="Please Select Any City">
 
-                    <option>asp-for="CityList.CityName"</option>
-                    <option>Surat</option>
-                    <option>Mumbai</option>
-                    <option>Bangalore</option>
-                    <option>Pune</option>
-                </select>
-                <span asp-validation-for="CityList.CityName" class="text-danger"></span>
+            <div class="form-group">
+                <label asp-for="FirmStateName" class="control-label"></label>
+                <input asp-for="FirmStateName" class="form-control" style=" border-radius: 25px;  padding: 20px; width: 500px; height: 10px;" />
+                <span asp-validation-for="FirmStateName" class="text-danger"></span>
             </div>
 
 
             <div class="form-group">
-                <label asp-for="StateId" class="control-label"></label>
-                <input asp-for="StateId" class="form-control" />
-                <span asp-validation-for="StateId" class="text-danger"></span>
+                <label asp-for="FirmCityName" class="control-label"></label>
+                <input asp-for="FirmCityName" class="form-control" />
+                <span asp-validation-for="FirmCityName" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="CreationDate" class="control-label"></label>
-                <input asp-for="CreationDate" class="form-control" />
-                <span asp-validation-for="CreationDate" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <label asp-for="ModificationDate" class="control-label"></label>
                 <input asp-for="ModificationDate" class="form-control" />

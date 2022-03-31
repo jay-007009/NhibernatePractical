@@ -108,8 +108,8 @@ namespace NhibernatePractical.DLL.Services
                     {
                         var firms = session.Get<FirmDTO>(id);
                         firms.FirmName = firm.FirmName;
-                        firms.CityList.CityId = firm.CityList.CityId;
-                        firms.StateList.StateId = firm.StateList.StateId;
+                        firms.FirmCityName = firm.FirmCityName;
+                        firms.FirmStateName = firm.FirmStateName;
                         firms.AddressLine1 = firm.AddressLine1;
                         firms.AddressLine2 = firm.AddressLine2;
                         firms.DonationLimit = firm.DonationLimit;

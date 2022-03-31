@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NhibernatePractical.DLL.Interfaces;
+using NhibernatePractical.Models.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +22,9 @@ namespace NhibernatePractical.Controllers
 
         // POST api/<LoginController>
         [HttpPost]
-        public string Post([FromBody] string userName, string password)
+        public string Post([FromBody] UserDTO user)
         {
-            if (_userServices.CheckUserActive(userName, password))
+            if (_userServices.CheckUserActive(user))
             {
                 return "Login Successfully.....";
             }

@@ -12,20 +12,22 @@ namespace NhibernatePractical
 {
     public class NHibernateSession
     {
+
         public static ISession OpenSession()
         {
+
+
             ISessionFactory sessionFactory = Fluently.Configure()
-                .Database(MsSqlConfiguration.MsSql2008
+                .Database(MsSqlConfiguration.MsSql2012
                   .ConnectionString(@"Data Source=.;Initial Catalog=DonationDB;Integrated Security=True")
                               .ShowSql()
                 )
                .Mappings(m =>
                           m.FluentMappings
                               .AddFromAssemblyOf<FirmMap>()
-                              .AddFromAssemblyOf<CityMap>()
-                              .AddFromAssemblyOf<StateMap>()
                               .AddFromAssemblyOf<LoginMap>()
                               .AddFromAssemblyOf<DonationMap>())
+                            
                 .ExposeConfiguration(cfg => new SchemaExport(cfg)
                                                 .Create(false, false))
                 .BuildSessionFactory();

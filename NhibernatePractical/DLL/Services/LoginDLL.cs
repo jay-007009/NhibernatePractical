@@ -10,7 +10,7 @@ namespace NhibernatePractical.DLL.Services
 {
     public class LoginDLL : ILogin
     {
-        public bool CheckUserActive(string userName, string password)
+        public bool CheckUserActive(UserDTO user)
         {
             try
             {
@@ -18,10 +18,10 @@ namespace NhibernatePractical.DLL.Services
                 {
                     using (ITransaction transaction = session.BeginTransaction())
                     {
-                        var user = session.Query<UserDTO>().FirstOrDefault(y => y.UserName == userName && y.Password == password && y.IsActive == true);
+                        var users = session.Query<UserDTO>().FirstOrDefault(y => y.UserName == user.UserName && y.Password == user.Password && y.IsActive == true);
 
                         transaction.Commit();
-                        if (user == null)
+                        if (users == null)
                         {
                             return false;
                         }
@@ -32,9 +32,9 @@ namespace NhibernatePractical.DLL.Services
                     }
                 }
             }
-            catch
+            catch(Exception e)
             {
-                throw new Exception();
+                throw e;
             }
         }
         public bool CheckIsActive(int id)
