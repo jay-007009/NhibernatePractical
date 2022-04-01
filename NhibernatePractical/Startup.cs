@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NhibernatePractical.BLL.InterFaces;
+using NhibernatePractical.BLL.Services;
 using NhibernatePractical.DLL.Interfaces;
 using NhibernatePractical.DLL.Services;
 using System;
@@ -29,6 +31,11 @@ namespace NhibernatePractical
             services.AddSingleton<IFirm, FirmDLL>();
             services.AddSingleton<IDonor, DonorDLL>();
             services.AddSingleton<ILogin, LoginDLL>();
+
+            services.AddSingleton<IFirmBLL, FirmBLL>();
+            services.AddSingleton<IDonorBLL, DonorBLL>();
+            services.AddSingleton<ILoginBLL, LoginBLL>();
+
             services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddControllersWithViews();
         }

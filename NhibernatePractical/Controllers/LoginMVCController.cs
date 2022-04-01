@@ -55,7 +55,7 @@ namespace NhibernatePractical.Controllers
                 {
                     return View();
                 }
-                return RedirectToAction(nameof(Index));
+            
             }
             catch
             {
