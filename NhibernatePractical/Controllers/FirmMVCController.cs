@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NhibernatePractical.BLL.InterFaces;
 using NhibernatePractical.DLL.Interfaces;
 using NhibernatePractical.Models.DTO;
 using System;
@@ -12,16 +13,16 @@ namespace NhibernatePractical.Controllers
     public class FirmMVCController : Controller
     {
 
-        private readonly IFirm _firmServices;
+        private readonly IFirmBLL _firmServices;
 
-        public FirmMVCController(IFirm firmServices)
+        public FirmMVCController(IFirmBLL firmServices)
         {
             _firmServices = firmServices;
         }
         // GET: FirmMVCController
         public ActionResult Index()
         {
-            return View(_firmServices.GetAllFirm());
+            return View(_firmServices.GetAll());
         }
 
         // GET: FirmMVCController/Details/5
@@ -43,7 +44,7 @@ namespace NhibernatePractical.Controllers
         {
             try
             {
-                var result = _firmServices.CreateFirm(firms);
+                var result = _firmServices.Create(firms);
                 return RedirectToAction(nameof(Index));
             }
             catch

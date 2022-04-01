@@ -45,7 +45,7 @@ namespace NhibernatePractical.DLL.Services
                 {
 
                     var userStatus = session.Get<FirmDTO>(id);
-                    var user = session.Get<UserDTO>(userStatus.UserList.UserId);
+                    var user = session.Get<UserDTO>(userStatus.Users.UserId);
 
                     transaction.Commit();
                     if (user.IsActive)

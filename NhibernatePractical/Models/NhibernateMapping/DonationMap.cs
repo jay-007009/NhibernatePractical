@@ -19,9 +19,10 @@ namespace NhibernatePractical.Models.NhibernateMapping
             Map(x => x.DonorCityName);
             Map(x => x.DonorStateName);
             Map(x => x.DonationAmount);
+
             Map(x => x.MobileNo);
-            Map(x => x.FirmId);
-            References(x => x.FirmList).Column("FirmId").Fetch.Join();
+           
+            References(x => x.Firms).Column("FirmId").Fetch.Join();
           
         }
     }

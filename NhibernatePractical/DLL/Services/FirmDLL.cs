@@ -18,11 +18,11 @@ namespace NhibernatePractical.DLL.Services
                 {
                     UserDTO user = new UserDTO
                     {
-                        UserName = firms.UserList.UserName,
-                        Password = firms.UserList.Password
+                        UserName = firms.Users.UserName,
+                        Password = firms.Users.Password
                     };
                     session.Save(user);
-                    firms.UserList.UserId = user.UserId;
+                    firms.Users.UserId = user.UserId;
 
                     session.Save(firms);
 
@@ -42,7 +42,7 @@ namespace NhibernatePractical.DLL.Services
                 using (ISession session = NHibernateSession.OpenSession())
                 {
                     var firmDelete = session.Get<FirmDTO>(id);
-                    var user = session.Get<UserDTO>(firmDelete.UserList.UserId);
+                    var user = session.Get<UserDTO>(firmDelete.Users.UserId);
                     using (var transaction = session.BeginTransaction())
                     {
                         session.Delete(user);

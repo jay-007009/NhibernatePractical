@@ -34,7 +34,7 @@ namespace NhibernatePractical.Models.DTO
 
         public virtual int FirmId { get; set; }
 
-        public virtual FirmDTO FirmList { get; set; }
+        public virtual FirmDTO Firms { get; set; }
         public virtual string MobileNo { get; set; }
     }
 }

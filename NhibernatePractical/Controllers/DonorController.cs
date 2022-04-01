@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NhibernatePractical.BLL.InterFaces;
 using NhibernatePractical.DLL.Interfaces;
 using NhibernatePractical.Models.DTO;
 using System;
@@ -13,9 +14,9 @@ namespace NhibernatePractical.Controllers
     [ApiController]
     public class DonorController : ControllerBase
     {
-        private readonly IDonor _donorServices;
+        private readonly IDonorBLL _donorServices;
 
-        public DonorController(IDonor donorServices)
+        public DonorController(IDonorBLL donorServices)
         {
             _donorServices = donorServices;
         }

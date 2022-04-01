@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NhibernatePractical.BLL.InterFaces;
 using NhibernatePractical.DLL.Interfaces;
 using NhibernatePractical.Models.DTO;
 using System;
@@ -13,9 +14,9 @@ namespace NhibernatePractical.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-        private readonly ILogin _userServices;
+        private readonly ILoginBLL _userServices;
 
-        public LoginController(ILogin userServices)
+        public LoginController(ILoginBLL userServices)
         {
             _userServices = userServices;
         }

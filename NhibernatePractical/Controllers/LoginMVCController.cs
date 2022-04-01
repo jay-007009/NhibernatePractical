@@ -2,7 +2,9 @@
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NhibernatePractical.BLL.InterFaces;
 using NhibernatePractical.DLL.Interfaces;
+using NhibernatePractical.Models.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +14,9 @@ namespace NhibernatePractical.Controllers
 {
     public class LoginMVCController : Controller
     {
-        private readonly ILogin _userServices;
+        private readonly ILoginBLL _userServices;
 
-        public LoginMVCController(ILogin userServices)
+        public LoginMVCController(ILoginBLL userServices)
         {
             _userServices = userServices;
         }
@@ -41,10 +43,18 @@ namespace NhibernatePractical.Controllers
         // POST: LoginMVCController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create([FromForm]UserDTO user)
         {
             try
             {
+                if (_userServices.CheckUserActive(user))
+                {
+                    return Redirect("/FirmMVC/Index");
+                }
+                else
+                {
+                    return View();
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch

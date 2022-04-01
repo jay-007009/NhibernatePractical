@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NhibernatePractical.BLL.InterFaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,13 @@ namespace NhibernatePractical.Controllers
 {
     public class DonorMVCController : Controller
     {
+
+        private readonly IDonorBLL _donorServices;
+
+        public DonorMVCController(IDonorBLL donorServices)
+        {
+            _donorServices = donorServices;
+        }
         // GET: DonorMVCController
         public ActionResult Index()
         {

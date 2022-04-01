@@ -15,23 +15,21 @@ namespace NhibernatePractical
 
         public static ISession OpenSession()
         {
-
+            string connectionString = "Data Source=.;Initial Catalog=DonationDB;Integrated Security=True";
 
             ISessionFactory sessionFactory = Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2012
-                  .ConnectionString(@"Data Source=.;Initial Catalog=DonationDB;Integrated Security=True")
-                              .ShowSql()
-                )
-               .Mappings(m =>
-                          m.FluentMappings
-                              .AddFromAssemblyOf<FirmMap>()
-                              .AddFromAssemblyOf<LoginMap>()
-                              .AddFromAssemblyOf<DonationMap>())
-                            
+                .ConnectionString(connectionString).ShowSql())
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<LoginMap>())
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<FirmMap>())
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<DonationMap>())
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<StateMap>())
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<CityMap>())
                 .ExposeConfiguration(cfg => new SchemaExport(cfg)
-                                                .Create(false, false))
+                .Create(false, false))
                 .BuildSessionFactory();
             return sessionFactory.OpenSession();
+
         }
     }
 }

@@ -28,8 +28,8 @@ namespace NhibernatePractical.Models.DTO
 
         public virtual string AddressLine2 { get; set; }
 
-        public virtual int UserId { get; set; }
-        public virtual UserDTO UserList { get; set; } 
+    
+        public virtual UserDTO Users { get; set; } 
         public virtual string FirmCityName { get; set; }
     
         public virtual string FirmStateName { get; set; }
@@ -44,6 +44,8 @@ namespace NhibernatePractical.Models.DTO
         {
             DonorList = new List<DonorDTO>();
         }
-       
+        public List<SelectListItem> Cities = new List<SelectListItem>();
+        public List<SelectListItem> States = new List<SelectListItem>();
+
     }
 }
