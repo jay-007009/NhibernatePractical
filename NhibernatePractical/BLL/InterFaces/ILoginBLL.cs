@@ -8,7 +8,7 @@ namespace NhibernatePractical.BLL.InterFaces
 {
    public interface ILoginBLL
     {
-        public bool CheckIsActive(int id);
-        public bool CheckUserActive(UserDTO user);
+        public void CheckIsActive(int id);
+        public bool CheckUserActive(string username,string password);
     }
 }

@@ -10,7 +10,10 @@ namespace NhibernatePractical.DLL.Services
 {
     public class LoginDLL : ILogin
     {
-        public bool CheckUserActive(UserDTO user)
+        /// <summary>
+        /// To Check User Active Or Not 
+        /// </summary>
+        public bool CheckUserActive(string username,string password)
         {
             try
             {
@@ -18,7 +21,7 @@ namespace NhibernatePractical.DLL.Services
                 {
                     using (ITransaction transaction = session.BeginTransaction())
                     {
-                        var users = session.Query<UserDTO>().FirstOrDefault(y => y.UserName == user.UserName && y.Password == user.Password && y.IsActive == true);
+                        var users = session.Query<UserDTO>().FirstOrDefault(y => y.UserName == username && y.Password == password && y.IsActive == true);
 
                         transaction.Commit();
                         if (users == null)
@@ -37,25 +40,29 @@ namespace NhibernatePractical.DLL.Services
                 throw e;
             }
         }
-        public bool CheckIsActive(int id)
+
+        /// <summary>
+        /// Change The State Of The Active User
+        /// </summary>
+        public void CheckIsActive(int id)
         {
             using (ISession session = NHibernateSession.OpenSession())
             {
                 using (ITransaction transaction = session.BeginTransaction())
                 {
 
-                    var userStatus = session.Get<FirmDTO>(id);
-                    var user = session.Get<UserDTO>(userStatus.Users.UserId);
-
-                    transaction.Commit();
+                    var user = session.Get<UserDTO>(id);
                     if (user.IsActive)
                     {
-                        return false;
+                        user.IsActive = false;
                     }
                     else
                     {
-                        return true;
+                        user.IsActive = true;
                     }
+                    session.SaveOrUpdate(user);
+                    transaction.Commit();
+
                 }
             }
         }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NhibernatePractical.BLL.InterFaces;
+using NhibernatePractical.Models.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace NhibernatePractical.Controllers
         // GET: DonorMVCController
         public ActionResult Index()
         {
-            return View();
+            return View(_donorServices.GetAllDonor());
         }
 
         // GET: DonorMVCController/Details/5
@@ -38,10 +39,11 @@ namespace NhibernatePractical.Controllers
         // POST: DonorMVCController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(DonorDTO donor)
         {
             try
             {
+                _donorServices.CreateDonor(donor);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -74,21 +76,22 @@ namespace NhibernatePractical.Controllers
         // GET: DonorMVCController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(_donorServices.GetDonorWithId(id));
         }
 
         // POST: DonorMVCController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, DonorDTO donor)
         {
             try
             {
+                _donorServices.DeleteDonor(id);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return RedirectToAction(nameof(Index));
             }
         }
     }

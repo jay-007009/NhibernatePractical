@@ -7,50 +7,35 @@ using System.Threading.Tasks;
 
 namespace NhibernatePractical.Models.DTO
 {
-    public class FirmDTO
+    public class FirmViewModel
     {
-       // [Key]
         public virtual int FirmId { get; set; }
-
         [Required]
         [StringLength(20, MinimumLength = 3)]
         public virtual string FirmName { get; set; }
-
         [Required]
-        public virtual int RegisterNo { get; set; }
-
-
+        public virtual int RegistrationNumber { get; set; }
         [Required]
-        public virtual DateTime RegisterDate { get; set; }
-
+        public virtual DateTime RegistrationDate { get; set; }
         [Required]
-        public virtual decimal DonationLimit { get; set; }
+        public virtual int DonationLimit { get; set; }
         [Required]
         public virtual string AddressLine1 { get; set; }
 
+        [Required]
         public virtual string AddressLine2 { get; set; }
-
-    
-        public virtual UserDTO Users { get; set; }
         [Required]
-        public virtual string FirmCityName { get; set; }
-    
-        public virtual string FirmStateName { get; set; }
-
-        public virtual DonorDTO Donors { get; set; }
+        public virtual string FirmCity { get; set; }
         [Required]
-        public virtual DateTime CreationDate { get; set; }
+        public virtual string FirmState { get; set; }
         [Required]
-        public virtual DateTime ModificationDate { get; set; }
+        public virtual DateTime FirmCreationDate { get; set; }
+        [Required]
+        public virtual DateTime FirmModificationDate { get; set; }
+        public virtual UserDTO User { get; set; }
+      
 
-        public virtual ICollection<DonorDTO> DonorList { get; set; }
-
-        public FirmDTO()
-        {
-            DonorList = new List<DonorDTO>();
-        }
         public List<SelectListItem> Cities = new List<SelectListItem>();
         public List<SelectListItem> States = new List<SelectListItem>();
-
     }
 }

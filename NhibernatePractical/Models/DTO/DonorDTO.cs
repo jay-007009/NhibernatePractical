@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,10 +11,12 @@ namespace NhibernatePractical.Models.DTO
      //   [Key]
         public virtual int DonorId { get; set; }
 
-     //   [StringLength(30), Required(ErrorMessage = "DonorName is Requires")]
+        [Required]
+        [StringLength(20, MinimumLength = 3)]
         public virtual string DonorName { get; set; }
 
-
+        [Required]
+        [Range(100, 100000)]
         public virtual decimal DonationAmount { get; set; }
 
 
@@ -32,7 +35,7 @@ namespace NhibernatePractical.Models.DTO
 
        
 
-        public virtual int FirmId { get; set; }
+     
 
         public virtual FirmDTO Firms { get; set; }
         public virtual string MobileNo { get; set; }

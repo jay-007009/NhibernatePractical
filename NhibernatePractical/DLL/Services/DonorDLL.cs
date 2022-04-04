@@ -72,5 +72,26 @@ namespace NhibernatePractical.DLL.Services
             }
         }
 
+        public DonorDTO GetDonorWithId(int id)
+        {
+            try
+            {
+                using (ISession session = NHibernateSession.OpenSession())
+                {
+                    using (var transaction = session.BeginTransaction())
+                    {
+                        var donor = session.Get<DonorDTO>(id);
+                        return donor;
+
+                    }
+                }
+            }
+            catch
+            {
+                throw new Exception();
+            }
+        }
+
+
     }
 }

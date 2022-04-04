@@ -30,5 +30,9 @@ namespace NhibernatePractical.BLL.Services
         {
             return _donorDLL.GetAllDonor();
         }
+        public DonorDTO GetDonorWithId(int id)
+        {
+            return _donorDLL.GetDonorWithId(id);
+        }
     }
 }

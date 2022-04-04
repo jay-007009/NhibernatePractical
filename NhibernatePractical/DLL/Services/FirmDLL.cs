@@ -1,4 +1,5 @@
-﻿using NHibernate;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using NHibernate;
 using NhibernatePractical.DLL.Interfaces;
 using NhibernatePractical.Models.DTO;
 using System;
@@ -113,7 +114,7 @@ namespace NhibernatePractical.DLL.Services
                         firms.AddressLine1 = firm.AddressLine1;
                         firms.AddressLine2 = firm.AddressLine2;
                         firms.DonationLimit = firm.DonationLimit;
-                        
+                        firms.CreationDate = firm.CreationDate;
                         firms.ModificationDate = firm.ModificationDate;
                         firms.RegisterDate = firm.RegisterDate;
                         firms.RegisterNo = firm.RegisterNo;
@@ -131,6 +132,33 @@ namespace NhibernatePractical.DLL.Services
             }
         }
 
+
+        public FirmViewModel GetAddress()
+        {
+            FirmViewModel firmviewModel = new FirmViewModel();
+            using (ISession session = NHibernateSession.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    var states = session.CreateCriteria<StateDTO>().List<StateDTO>();
+                    firmviewModel.States.Add(new SelectListItem { Text = "Select State", Value = "" });
+                    foreach (var state in states)
+                    {
+                        firmviewModel.States.Add(new SelectListItem { Text = state.StateName, Value = state.StateId.ToString() });
+                    }
+                    var cities = session.CreateCriteria<CityDTO>().List<CityDTO>();
+                    firmviewModel.Cities.Add(new SelectListItem { Text = "Select City", Value = "" });
+
+                    foreach (var city in cities)
+                    {
+                        firmviewModel.Cities.Add(new SelectListItem { Text = city.CityName, Value = city.CityId.ToString() });
+                    }
+                    transaction.Commit();
+                    return firmviewModel;
+
+                }
+            }
+        }
 
 
     }

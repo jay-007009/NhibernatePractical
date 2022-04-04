@@ -41,5 +41,9 @@ namespace NhibernatePractical.BLL.Services
         {
             return _firmDLL.UpdateFirm(id, firm);
         }
+        public FirmViewModel GetCity()
+        {
+            return _firmDLL.GetAddress();
+        }
     }
 }

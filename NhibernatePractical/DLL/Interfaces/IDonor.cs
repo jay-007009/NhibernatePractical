@@ -11,5 +11,6 @@ namespace NhibernatePractical.DLL.Interfaces
         public List<DonorDTO> GetAllDonor();
         public string CreateDonor(DonorDTO donors);
         public string DeleteDonor(int id);
+        public DonorDTO GetDonorWithId(int id);
     }
 }

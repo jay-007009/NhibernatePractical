@@ -11,5 +11,6 @@ namespace NhibernatePractical.BLL.InterFaces
         public string CreateDonor(DonorDTO donor);
         public string DeleteDonor(int id);
         public List<DonorDTO> GetAllDonor();
+        public DonorDTO GetDonorWithId(int id);
     }
 }

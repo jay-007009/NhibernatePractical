@@ -17,14 +17,14 @@ namespace NhibernatePractical.BLL.Services
             _userDLL = userDLL;
         }
 
-        public bool CheckIsActive(int id)
+        public void CheckIsActive(int id)
         {
-            return _userDLL.CheckIsActive(id);
+            _userDLL.CheckIsActive(id);
         }
 
-        public bool CheckUserActive(UserDTO user)
+        public bool CheckUserActive(string username, string Password)
         {
-            return _userDLL.CheckUserActive(user);
+            return _userDLL.CheckUserActive(username, Password);
         }
     }
 }

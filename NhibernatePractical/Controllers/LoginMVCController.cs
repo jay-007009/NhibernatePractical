@@ -43,44 +43,49 @@ namespace NhibernatePractical.Controllers
         // POST: LoginMVCController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([FromForm]UserDTO user)
+        public ActionResult Create([FromForm] string userName, string userPassword)
         {
             try
             {
-                if (_userServices.CheckUserActive(user))
+                if (_userServices.CheckUserActive(userName, userPassword))
                 {
-                    return Redirect("/FirmMVC/Index");
+                    if (userName == "Admin")
+                    {
+                        return Redirect("/Firm/Index");
+                    }
+                    else
+                    {
+                        return Redirect("/Donor/Index");
+                    }
+
                 }
                 else
                 {
-                    return View();
+                    TempData["Message"] = "User Was Not Active";
+                    return RedirectToAction(nameof(Index));
                 }
-            
             }
             catch
             {
-                return View();
+                return RedirectToAction(nameof(Index));
             }
         }
 
-        // GET: LoginMVCController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+      
 
         // POST: LoginMVCController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                _userServices.CheckIsActive(id);
+                return Redirect("/Firm/Index");
             }
             catch
             {
-                return View();
+                return Redirect("/Firm/Index");
             }
         }
 

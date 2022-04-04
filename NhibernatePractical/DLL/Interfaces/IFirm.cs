@@ -14,6 +14,7 @@ namespace NhibernatePractical.DLL.Interfaces
 
         public FirmDTO GetFirmWithId(int id);
         public string UpdateFirm(int id, FirmDTO firm);
+        public FirmViewModel GetAddress();
 
     }
 }

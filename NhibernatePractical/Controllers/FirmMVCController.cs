@@ -22,6 +22,7 @@ namespace NhibernatePractical.Controllers
         // GET: FirmMVCController
         public ActionResult Index()
         {
+            TempData["Message"] = "Welcome";
             return View(_firmServices.GetAll());
         }
 
@@ -34,7 +35,7 @@ namespace NhibernatePractical.Controllers
         // GET: FirmMVCController/Create
         public ActionResult Create()
         {
-            return View();
+            return View(_firmServices.GetCity());
         }
 
         // POST: FirmMVCController/Create
@@ -56,42 +57,44 @@ namespace NhibernatePractical.Controllers
         // GET: FirmMVCController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(_firmServices.GetWithId(id));
         }
 
         // POST: FirmMVCController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, [FromForm] FirmDTO firm)
         {
             try
             {
+                _firmServices.Update(id, firm);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return RedirectToAction(nameof(Edit));
             }
         }
 
         // GET: FirmMVCController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(_firmServices.GetWithId(id));
         }
 
         // POST: FirmMVCController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, FirmDTO firm)
         {
             try
             {
+                _firmServices.Delete(id);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return RedirectToAction(nameof(Delete));
             }
         }
     }

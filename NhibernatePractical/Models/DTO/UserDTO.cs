@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,7 +11,7 @@ namespace NhibernatePractical.Models.DTO
         //  [Key]
         public virtual int UserId { get; set; }
 
-        //  [StringLength(30), Required(ErrorMessage = "UserName is Required")]
+        [Required]
         public virtual string UserName { get; set; }
 
 

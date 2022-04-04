@@ -8,7 +8,7 @@ namespace NhibernatePractical.DLL.Interfaces
 {
    public interface ILogin
     {
-        public bool CheckUserActive(UserDTO user);
-        public bool CheckIsActive(int id);
+        public bool CheckUserActive(string username, string password);
+        public void CheckIsActive(int id);
     }
 }

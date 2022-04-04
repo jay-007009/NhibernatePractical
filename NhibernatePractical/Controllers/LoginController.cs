@@ -23,9 +23,9 @@ namespace NhibernatePractical.Controllers
 
         // POST api/<LoginController>
         [HttpPost]
-        public string Post([FromBody] UserDTO user)
+        public string Post([FromBody] string userName, string password)
         {
-            if (_userServices.CheckUserActive(user))
+            if (_userServices.CheckUserActive(userName, password))
             {
                 return "Login Successfully.....";
             }
@@ -37,9 +37,9 @@ namespace NhibernatePractical.Controllers
 
         // PUT api/<LoginController>/5
         [HttpPut("{id}")]
-        public bool Put(int id)
+        public void Put(int id)
         {
-            return _userServices.CheckIsActive(id);
+             _userServices.CheckIsActive(id);
         }
 
 
